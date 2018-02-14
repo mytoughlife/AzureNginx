@@ -1,5 +1,7 @@
 #! /bin/sh
 
+rm -rf nginx.conf
+
 wget https://raw.githubusercontent.com/mytoughlife/AzureNginx/master/nginx.conf
 
 cp  -rf nginx.conf /etc/nginx/nginx.conf
