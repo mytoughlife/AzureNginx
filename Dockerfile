@@ -1,7 +1,11 @@
 FROM nginx
 
-ADD  https://github.com/mytoughlife/AzureNginx/blob/master/nginx.conf .
+RUN  apt-get update \
+  && apt-get install -y wget \
+  && rm -rf /var/lib/apt/lists/*
 
-COPY nginx.conf /etc/nginx/nginx.conf
+ADD startup.sh .
 
-#CMD ["nginx", "-s", "reload"]
+RUN chmod +x startup.sh
+
+ENTRYPOINT ./startup.sh
